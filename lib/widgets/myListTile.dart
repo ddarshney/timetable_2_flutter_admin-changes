@@ -3,11 +3,6 @@ import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
-import '../globals/myColors.dart';
 
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
@@ -18,7 +13,6 @@ class MyListTile extends StatelessWidget {
   final String email;
   final String status;
   Color sideColor;
-  Color mainColor;
   Color text;
   Color bgColor;
 
@@ -32,23 +26,16 @@ class MyListTile extends StatelessWidget {
     switch (this.status) {
       case 'cancelled':
         sideColor = kBlack;
-        mainColor = k1Red;
         text = kRed;
-
         bgColor=lRed;
-
         break;
       case 'update':
         sideColor = kBlue;
-        mainColor = k1Yellow;
         text = kYellow;
-
         bgColor=lYellow;
-
         break;
       default:
         sideColor = kBlue;
-        mainColor = kBlue;
         bgColor=lBlue;
         text = kBlue;
     }
@@ -119,18 +106,6 @@ class MyListTile extends StatelessWidget {
                   ),
                 ),
               ),
-            height: 10,
-            width: 40,
-                      color: mainColor,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          '$status',
-                          style: 
-                            MyFonts.medium.size(5),
-                        ),
-                      ),
-                    ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
