@@ -3,6 +3,12 @@ import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
   final String title;
@@ -14,6 +20,7 @@ class MyListTile extends StatelessWidget {
   Color sideColor;
   Color mainColor;
   Color text;
+  Color bgColor;
 
   MyListTile(
       {this.title,
@@ -27,15 +34,23 @@ class MyListTile extends StatelessWidget {
         sideColor = kBlack;
         mainColor = k1Red;
         text = kRed;
+
+        bgColor=lRed;
+
         break;
       case 'update':
         sideColor = kBlue;
         mainColor = k1Yellow;
         text = kYellow;
+
+        bgColor=lYellow;
+
         break;
       default:
         sideColor = kBlue;
         mainColor = kBlue;
+        bgColor=lBlue;
+        text = kBlue;
     }
   }
 
@@ -85,6 +100,25 @@ class MyListTile extends StatelessWidget {
                 ),
               ),
               Container(
+                decoration: BoxDecoration(
+                    color: bgColor,
+                  borderRadius: BorderRadius.circular(18.25)
+                ),
+                height: 20,
+                width: 79,
+
+                child: SizedBox(
+
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      '$status',
+                      style:
+                        MyFonts.medium.setColor(text).size(10),
+                    ),
+                  ),
+                ),
+              ),
             height: 10,
             width: 40,
                       color: mainColor,
@@ -101,12 +135,15 @@ class MyListTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          '$time',
-                          style: MyFonts.extraBold.size(20),
+                    Container(
+                      height: 20,
+                      child: Expanded(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Text(
+                            '$time',
+                            style: MyFonts.extraBold.size(20),
+                          ),
                         ),
                       ),
                     ),
@@ -139,8 +176,8 @@ class MyListTile extends StatelessWidget {
           gradient:
               LinearGradient(stops: [0.05, 0.05], colors: [sideColor, kWhite]),
           color: kWhite,
-          // border: Border.all(color: kGrey, width: 1),
-          // borderRadius: BorderRadius.circular(15),
+           border: Border.all(color: grey2, width: 1),
+           borderRadius: BorderRadius.circular(4),
         ),
       ),
     );
