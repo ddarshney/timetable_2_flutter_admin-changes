@@ -1,8 +1,11 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
-
+import 'package:timetable_2_flutter_admin/widgets/Pop_up_dialog.dart';
 
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
@@ -44,9 +47,10 @@ class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print('You tapped for more details');
-      },
+        // When the user taps the button, show a dialog box.
+        onTap: () {
+          showPopup(context, _popupBody(), '$title $status');
+        },
       child: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(MySpaces.listTileLeftPadding, 0, 0,
@@ -66,7 +70,7 @@ class MyListTile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                     Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -158,3 +162,43 @@ class MyListTile extends StatelessWidget {
     );
   }
 }
+
+showPopup(BuildContext context, Widget widget, String title,
+    {BuildContext popupContext}) {
+  Navigator.push(
+    context,
+    PopupLayout(
+      top: 1,
+      left: 10,
+      right: 10,
+      bottom: 10,
+      child: PopupContent(
+        content: Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+            leading: new Builder(builder: (context) {
+              return IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  try {
+                    Navigator.pop(context); //close the popup
+                  } catch (e) {}
+                },
+              );
+            }),
+            brightness: Brightness.light,
+          ),
+
+          body: widget,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget _popupBody() {
+  return Container(
+
+  );
+}
+
