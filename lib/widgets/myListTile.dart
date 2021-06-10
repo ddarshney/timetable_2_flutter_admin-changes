@@ -29,7 +29,7 @@ class MyListTile extends StatelessWidget {
       this.email}) {
 
     switch (this.status) {
-      case 'cancelled':
+      case 'cancel':
         sideColor = kBlack;
         text = kRed;
         bgColor=lRed;
@@ -40,7 +40,7 @@ class MyListTile extends StatelessWidget {
         bgColor=lYellow;
         break;
       default:
-        sideColor = kBlue;
+        sideColor = kRed;
         bgColor=lBlue;
         text = kBlue;
     }
