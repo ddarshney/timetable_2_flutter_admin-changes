@@ -27,6 +27,7 @@ class MyListTile extends StatelessWidget {
       this.time,
       this.duration,
       this.email}) {
+
     switch (this.status) {
       case 'cancelled':
         sideColor = kBlack;
@@ -44,6 +45,8 @@ class MyListTile extends StatelessWidget {
         text = kBlue;
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
