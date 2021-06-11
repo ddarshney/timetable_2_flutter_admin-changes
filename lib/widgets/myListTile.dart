@@ -40,7 +40,7 @@ class MyListTile extends StatelessWidget {
         bgColor=lYellow;
         break;
       default:
-        sideColor = kRed;
+        sideColor = kBlue;
         bgColor=lBlue;
         text = kBlue;
     }
