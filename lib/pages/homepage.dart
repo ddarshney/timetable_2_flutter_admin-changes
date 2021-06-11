@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timetable_2_flutter_admin/widgets/appBar.dart';
-import './push_req.dart' as first;
-import './my_department.dart' as second;
+import 'package:timetable_2_flutter_admin/pages/my_department.dart';
+import 'package:timetable_2_flutter_admin/pages/push_req.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -53,15 +53,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
-         bottomNavigationBar: new Material(
-                color: Colors.pink,
-         ),
-            body: new TabBarView(
-                children: <Widget>[
-                  new first.PushRequest(),
-                  new second.MyDepartment(),
-                ]
+            body: TabBarView(children: <Widget>[
+              PushRequest(),
+              MyDepartment(),
+            ]
             )
         ),
       ),

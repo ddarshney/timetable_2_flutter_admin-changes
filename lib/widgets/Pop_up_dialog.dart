@@ -74,6 +74,7 @@ class PopupLayout extends ModalRoute {
           left: this.left,
           right: this.right,
           top: this.top),
+      height: MediaQuery.of(context).size.height * 0.8,
       child: child,
     );
   }

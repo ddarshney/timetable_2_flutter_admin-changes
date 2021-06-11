@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timetable_2_flutter_admin/pages/power_up.dart';
 
 class MyDepartment extends StatefulWidget {
   @override
@@ -8,12 +9,6 @@ class MyDepartment extends StatefulWidget {
 class _MyDepartmentState extends State<MyDepartment> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-        ),
-      ),
-    );
+    return PowerUp();
   }
 }

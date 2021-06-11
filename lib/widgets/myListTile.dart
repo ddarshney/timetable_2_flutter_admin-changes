@@ -6,6 +6,7 @@ import 'package:timetable_2_flutter_admin/globals/myColors.dart';
 import 'package:timetable_2_flutter_admin/globals/myFonts.dart';
 import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 import 'package:timetable_2_flutter_admin/widgets/Pop_up_dialog.dart';
+import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
@@ -26,8 +27,9 @@ class MyListTile extends StatelessWidget {
       this.time,
       this.duration,
       this.email}) {
+
     switch (this.status) {
-      case 'cancelled':
+      case 'cancel':
         sideColor = kBlack;
         text = kRed;
         bgColor=lRed;
@@ -38,18 +40,21 @@ class MyListTile extends StatelessWidget {
         bgColor=lYellow;
         break;
       default:
-        sideColor = kBlue;
+        sideColor = kRed;
         bgColor=lBlue;
         text = kBlue;
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return InkWell(
         // When the user taps the button, show a dialog box.
         onTap: () {
-          showPopup(context, _popupBody(), '$title $status');
+          showPopup(context, _popupBody( title, type , email), '$title $status');
         },
       child: Container(
         child: Padding(
@@ -165,20 +170,22 @@ class MyListTile extends StatelessWidget {
 
 showPopup(BuildContext context, Widget widget, String title,
     {BuildContext popupContext}) {
+
   Navigator.push(
     context,
     PopupLayout(
-      top: 1,
-      left: 10,
-      right: 10,
-      bottom: 10,
+      top: 100,
+      left: 0,
+      right: 0,
+      bottom: 0,
       child: PopupContent(
         content: Scaffold(
+
           appBar: AppBar(
             title: Text(title),
             leading: new Builder(builder: (context) {
               return IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: Icon(Icons.note_add_outlined),
                 onPressed: () {
                   try {
                     Navigator.pop(context); //close the popup
@@ -196,9 +203,56 @@ showPopup(BuildContext context, Widget widget, String title,
   );
 }
 
-Widget _popupBody() {
+Widget _popupBody(String title,String type,String email) {
   return Container(
-
+    child: Column(
+      children: [
+        Row(
+          children: [
+            Icon(Icons.school_outlined),
+            Expanded(child: Text('Course Code')),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                      color: kBlue,
+                    )),
+                child: Text('$title'),
+              ),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Icon(Icons.tag),
+            Expanded(child: Text('tags')),
+            Expanded(
+              child: Text('$type'),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Icon(Icons.person_pin),
+            Expanded(child: Text('User')),
+            Expanded(
+              child: Text('$email'),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Icon(Icons.calendar_today_outlined),
+            Expanded(child: Text('Date Added')),
+            Expanded(
+              child: Text("11th June"),
+            )
+          ],
+        ),
+      ],
+    ),
   );
 }
+
 

@@ -13,7 +13,6 @@ AppBar appBar() {
           onPressed: () {},
         ),
       ),
-
     ],
     title: RichText(
       text: TextSpan(
@@ -26,12 +25,12 @@ AppBar appBar() {
             )
           ]),
     ),
-     elevation: 0.0,
-     bottom: TabBar(
-       tabs: [
-         Tab(icon: Text('Push Requests')),
-         Tab(icon: Text('My Department')),
-         ],
-         ),
+    elevation: 0.0,
+    bottom: TabBar(
+      tabs: [
+        Tab(icon: Text('Push Requests')),
+        Tab(icon: Text('My Department')),
+      ],
+    ),
   );
 }
