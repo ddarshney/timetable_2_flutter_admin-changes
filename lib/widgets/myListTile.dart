@@ -8,6 +8,11 @@ import 'package:timetable_2_flutter_admin/globals/mySpaces.dart';
 import 'package:timetable_2_flutter_admin/widgets/Pop_up_dialog.dart';
 import 'package:timetable_2_flutter_admin/globals/sizeConfig.dart';
 
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+import '../globals/myColors.dart';
+
 // ignore: must_be_immutable
 class MyListTile extends StatelessWidget {
   final String title;
@@ -207,52 +212,105 @@ Widget _popupBody(String title,String type,String email) {
   return Container(
     child: Column(
       children: [
-        Row(
-          children: [
-            Icon(Icons.school_outlined),
-            Expanded(child: Text('Course Code')),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: kBlue,
-                    )),
-                child: Text('$title'),
+        Padding(
+          padding: const EdgeInsets.all(42.0),
+          child: Row(
+            children: [
+               Padding(
+                 padding: const EdgeInsets.fromLTRB(0.0,0.0,20,0.0),
+                 child: Icon(Icons.school_outlined),
+               ),
+              Expanded(
+                  child: Text('Course Code')),
+              Expanded(
+                child: Container(
+
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                        color: kBlue,
+                      )),
+                  child: Container(
+                      decoration: BoxDecoration(),
+                      padding: EdgeInsets.fromLTRB(30.0,10.0,.0,10),
+                      child: Text(
+
+                          '$title',
+                        style: MyFonts.medium.size(20),
+
+                      )
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40.0,0.0,40.0,30.0),
+          child: Container(
+            height: 70,
+            width: 360,
+            decoration: BoxDecoration(
+              gradient:
+              LinearGradient(stops: [60,60.25], colors: [lBlue,lBlue]),
+              color: lBlue,
+              border: Border.all(color: grey2, width: 1),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40.0,0.0,40.0,30.0),
+          child: Row(
+            children: [
+               Padding(
+                 padding: const EdgeInsets.fromLTRB(0.0,0.0,20,0.0),
+                 child: Icon(Icons.tag),
+               ),
+
+              Expanded(child: Text('tags')),
+              Expanded(
+                child: Text('$type'),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40.0,0.0,40.0,30.0),
+          child: Row(
+            children: [
+               Padding(
+                 padding: const EdgeInsets.fromLTRB(0.0,0.0,20,0.0),
+                 child: Icon(Icons.person_pin),
+               ),
+
+              Expanded(child: Text('User')),
+              Expanded(
+                child: Text('$email'),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40.0,0.0,40.0,30.0),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0,0.0,20,0.0),
+                child: Icon(Icons.calendar_today_outlined),
               ),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Icon(Icons.tag),
-            Expanded(child: Text('tags')),
-            Expanded(
-              child: Text('$type'),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Icon(Icons.person_pin),
-            Expanded(child: Text('User')),
-            Expanded(
-              child: Text('$email'),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Icon(Icons.calendar_today_outlined),
-            Expanded(child: Text('Date Added')),
-            Expanded(
-              child: Text("11th June"),
-            )
-          ],
+
+              Expanded(child: Text('Date Added')),
+              Expanded(
+                child: Text("11th June"),
+              )
+            ],
+          ),
         ),
       ],
     ),
   );
 }
-
 
